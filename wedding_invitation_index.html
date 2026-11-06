@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6f1832" />
+  <title>Supriya & Deepak | Wedding Invitation</title>
+  <style>
+    :root {
+      --maroon: #6f1832;
+      --wine: #8b2945;
+      --gold: #c69a4b;
+      --cream: #fff8ed;
+      --blush: #f8e8df;
+      --ink: #4c2730;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(198,154,75,.12), transparent 22rem),
+        radial-gradient(circle at 92% 30%, rgba(139,41,69,.08), transparent 24rem),
+        var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+    .page { width: min(920px, 100% - 28px); margin: 24px auto; }
+    .invitation {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(198,154,75,.75);
+      border-radius: 24px;
+      background: rgba(255,252,246,.94);
+      box-shadow: 0 18px 55px rgba(77,31,43,.13);
+    }
+    .invitation::before, .invitation::after {
+      content: "✿";
+      position: absolute;
+      color: rgba(198,154,75,.28);
+      font-size: 100px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .invitation::before { top: 10px; left: 16px; transform: rotate(-22deg); }
+    .invitation::after { right: 16px; bottom: 10px; transform: rotate(22deg); }
+    header { text-align: center; padding: 48px 22px 18px; position: relative; }
+    .om { color: var(--gold); font-size: 38px; margin-bottom: 4px; }
+    .eyebrow { color: var(--wine); letter-spacing: .2em; text-transform: uppercase; font-size: 11px; }
+    h1 { color: var(--maroon); font-size: clamp(36px, 7vw, 66px); line-height: 1.05; margin: 12px 0; font-weight: 500; }
+    .amp { color: var(--gold); font-style: italic; font-size: .75em; }
+    .subtitle { font-size: 17px; max-width: 620px; margin: 0 auto; }
+    .rule { width: 110px; height: 1px; background: var(--gold); margin: 22px auto; position: relative; }
+    .rule::after { content: "❖"; position: absolute; color: var(--gold); background: var(--cream); padding: 0 8px; left: 50%; top: -13px; transform: translateX(-50%); }
+    .dolls-wrap { display: flex; justify-content: center; align-items: end; gap: 18px; margin: 18px auto 8px; }
+    .doll { width: 142px; height: 190px; position: relative; animation: float 3.8s ease-in-out infinite; }
+    .doll.groom { animation-delay: .5s; }
+    .head { position: absolute; width: 58px; height: 64px; border-radius: 48% 48% 45% 45%; background: #c9825d; top: 17px; left: 42px; border: 2px solid #8c503b; z-index: 2; }
+    .hair { position: absolute; width: 62px; height: 34px; border-radius: 50% 50% 25% 25%; background: #2e1c1c; top: 10px; left: 40px; z-index: 3; }
+    .face { position: absolute; top: 44px; left: 58px; z-index: 4; color: #42221f; font-size: 17px; letter-spacing: 8px; }
+    .body-dress { position: absolute; bottom: 0; left: 12px; width: 118px; height: 122px; background: #a91f43; clip-path: polygon(38% 0,62% 0,100% 100%,0 100%); border: 2px solid var(--gold); }
+    .bride .body-dress { background: linear-gradient(90deg,#8f1636,#c13c55,#8f1636); }
+    .groom .body-dress { background: linear-gradient(90deg,#d6a94d,#fff0c8,#c18b35); clip-path: polygon(25% 0,75% 0,91% 100%,9% 100%); }
+    .dupatta { position: absolute; width: 50px; height: 115px; left: 10px; bottom: 4px; background: rgba(237,177,90,.72); transform: rotate(12deg); border-radius: 50% 0 0 0; z-index: 1; }
+    .turban { position: absolute; top: 3px; left: 36px; width: 68px; height: 25px; background: #a51d3d; border-radius: 50% 50% 10% 10%; z-index: 5; border: 2px solid var(--gold); }
+    .turban::after { content: "✦"; color: var(--gold); position: absolute; left: 28px; top: -13px; font-size: 20px; }
+    .necklace { position: absolute; top: 77px; left: 48px; z-index: 5; color: #f1c45e; font-size: 22px; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    section { padding: 26px clamp(18px, 5vw, 58px); text-align: center; }
+    h2 { color: var(--maroon); font-size: 27px; font-weight: 500; margin: 0 0 10px; }
+    .smallcaps { color: var(--gold); letter-spacing: .16em; text-transform: uppercase; font-size: 11px; }
+    .family-grid, .event-grid, .maids-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 20px; }
+    .panel {
+      border: 1px solid rgba(198,154,75,.55);
+      border-radius: 16px;
+      padding: 18px;
+      background: linear-gradient(145deg, #fffdf8, #fff4e9);
+    }
+    .panel h3 { color: var(--wine); margin: 0 0 8px; font-size: 20px; font-weight: 500; }
+    .panel p { margin: 4px 0; }
+    .event-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .event-date { color: var(--gold); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .event-icon { font-size: 27px; margin: 5px 0; }
+    .maid { background: #fffaf3; border: 1px solid rgba(198,154,75,.45); border-radius: 30px; padding: 10px 14px; color: var(--wine); }
+    .venue-name { font-size: 22px; color: var(--maroon); margin: 8px 0; }
+    .countdown { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 18px 0 4px; }
+    .timebox { min-width: 68px; padding: 10px 8px; border-radius: 12px; color: white; background: var(--maroon); }
+    .timebox strong { display: block; font-size: 24px; line-height: 1.2; }
+    .timebox span { font: 10px Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .btn { display: inline-block; padding: 11px 19px; border-radius: 30px; text-decoration: none; font: 14px Arial, sans-serif; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .primary { background: var(--maroon); color: white; }
+    .outline { border: 1px solid var(--maroon); color: var(--maroon); }
+    footer { text-align: center; padding: 28px 18px 42px; color: var(--wine); }
+    .heart { color: #b33a56; }
+    @media (max-width: 650px) {
+      .family-grid { grid-template-columns: 1fr; }
+      .event-grid { grid-template-columns: 1fr; }
+      .doll { transform: scale(.88); transform-origin: bottom center; margin: 0 -8px; }
+      .doll.groom { animation-delay: .5s; }
+      header { padding-top: 38px; }
+      .invitation::before, .invitation::after { font-size: 65px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="invitation">
+      <header>
+        <div class="om">ॐ</div>
+        <div class="eyebrow">With the blessings of our families</div>
+        <p class="subtitle">Together with our parents, we joyfully invite you to celebrate the wedding of</p>
+        <h1>Supriya <span class="amp">&</span> Deepak</h1>
+        <div class="rule"></div>
+
+        <!-- Decorative bride and groom dolls made with CSS; no photos or photo slideshow. -->
+        <div class="dolls-wrap" aria-label="Illustration of a Hindu bride and groom in traditional wedding attire">
+          <div class="doll bride">
+            <div class="hair"></div><div class="head"></div><div class="face">• •</div>
+            <div class="dupatta"></div><div class="body-dress"></div>
+            <div class="necklace">❀</div>
+          </div>
+          <div class="doll groom">
+            <div class="hair"></div><div class="head"></div><div class="face">• •</div>
+            <div class="turban"></div><div class="body-dress"></div>
+            <div class="necklace">✦</div>
+          </div>
+        </div>
+        <p class="smallcaps">A celebration of love, tradition & togetherness</p>
+      </header>
+
+      <section>
+        <div class="smallcaps">Save the dates</div>
+        <h2>February 10 & 11</h2>
+        <p>We would be honoured by your presence as we begin our new journey together.</p>
+        <div class="countdown" aria-label="Wedding countdown">
+          <div class="timebox"><strong id="days">--</strong><span>Days</span></div>
+          <div class="timebox"><strong id="hours">--</strong><span>Hours</span></div>
+          <div class="timebox"><strong id="minutes">--</strong><span>Minutes</span></div>
+          <div class="timebox"><strong id="seconds">--</strong><span>Seconds</span></div>
+        </div>
+        <p style="font-size:12px;color:#8b6570">Countdown year is currently set to 2027. Change it in the script if needed.</p>
+      </section>
+
+      <section>
+        <div class="smallcaps">The families</div>
+        <h2>With love and blessings</h2>
+        <div class="family-grid">
+          <div class="panel">
+            <h3>Groom's Family</h3>
+            <p><strong>Deepak Poojari</strong></p>
+            <p>Son of Eshwar Poojari</p>
+            <p>and Gayathri Poojari</p>
+            <p>Brother: Dharshith Poojari</p>
+          </div>
+          <div class="panel">
+            <h3>Bride's Family</h3>
+            <p><strong>Supriya S.H</strong></p>
+            <p>Daughter of Sundaramurthy P.</p>
+            <p>and Hemalatha S.</p>
+            <p>Brother: Madhusudan S.H</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="smallcaps">Wedding celebrations</div>
+        <h2>Join us for the festivities</h2>
+        <div class="event-grid">
+          <div class="panel">
+            <div class="event-icon">💍</div>
+            <div class="event-date">February 10 · Night</div>
+            <h3>Engagement</h3>
+            <p>Join us as we celebrate the beginning of our forever.</p>
+          </div>
+          <div class="panel">
+            <div class="event-icon">🌺</div>
+            <div class="event-date">February 11 · Morning</div>
+            <h3>Muhurtham</h3>
+            <p>Be with us for the auspicious wedding ceremony.</p>
+          </div>
+          <div class="panel">
+            <div class="event-icon">🎉</div>
+            <div class="event-date">February 11 · Afternoon</div>
+            <h3>Reception</h3>
+            <p>Celebrate, bless us and share in our happiness.</p>
+          </div>
+        </div>
+        <p style="font-size:13px">Exact event timings will be shared soon.</p>
+      </section>
+
+      <section>
+        <div class="smallcaps">Bride's maids</div>
+        <h2>Standing by the bride</h2>
+        <p>With love, laughter and lifelong friendship, these wonderful ladies are part of the celebration.</p>
+        <div class="maids-grid">
+          <div class="maid">Sindhu G</div>
+          <div class="maid">Thanushree R</div>
+          <div class="maid">Bhargavi K</div>
+          <div class="maid">Bindhu K.M</div>
+          <div class="maid">Arpitha N.C</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="smallcaps">The wedding venue</div>
+        <h2>We look forward to welcoming you</h2>
+        <div class="panel">
+          <div class="event-icon">📍</div>
+          <div class="venue-name">Thunga Mantapa</div>
+          <p>Sri Balasubramaniam Temple</p>
+          <p>Guddek al – 577201</p>
+          <div class="buttons">
+            <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Thunga+Mantapa+Sri+Balasubramaniam+Temple+Guddek al+577201">Find the venue</a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="smallcaps">Your presence is our blessing</div>
+        <h2>Kindly join us</h2>
+        <p>For details or to share your wishes, please contact our families.</p>
+        <div class="buttons">
+          <a class="btn outline" href="tel:8310174847">Bride's family: 8310174847</a>
+          <a class="btn outline" href="tel:7349114349">Groom's family: 7349114349</a>
+        </div>
+        <div class="buttons">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/918310174847?text=Congratulations%20Supriya%20and%20Deepak!">Send wishes on WhatsApp</a>
+        </div>
+      </section>
+
+      <footer>
+        <div class="om">॥ श्री गणेशाय नमः ॥</div>
+        <p>With love,</p>
+        <h2>Supriya & Deepak</h2>
+        <p>Made joyful by your blessings <span class="heart">♥</span></p>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    // IMPORTANT: Change this year if your wedding is not in 2027.
+    const WEDDING_YEAR = 2027;
+    const weddingDate = new Date(WEDDING_YEAR, 1, 11, 9, 0, 0); // Feb 11, 9:00 AM local time
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+      if (diff <= 0) {
+        document.querySelector(".countdown").innerHTML = "<p>Today is the big day! With love, Supriya & Deepak.</p>";
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
